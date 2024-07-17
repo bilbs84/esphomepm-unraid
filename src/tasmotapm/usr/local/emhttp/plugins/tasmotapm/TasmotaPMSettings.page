@@ -1,6 +1,6 @@
 Menu="Utilities"
 Icon="tasmotapm.png"
-Title="Tasmota Power Monitor"
+Title="ESPHome Power Monitor"
 ---
 <?php
 $tasmotapm_cfg 			= parse_plugin_cfg("tasmotapm",true);
@@ -14,7 +14,7 @@ $tasmotapm_costs_unit	= isset($tasmotapm_cfg['COSTS_UNIT']) ? $tasmotapm_cfg['CO
 ?>
 
 <form markdown="1" method="POST" action="/update.php" target="progressFrame">
-<input type="hidden" name="#file" value="tasmotapm/tasmotapm.cfg" />
+<input type="hidden" name="#file" value="esphomepm/esphomepm.cfg" />
 
 Use a password for Tasmota Web UI:
 : <select id="DEVICE_USE_PASS" name="DEVICE_USE_PASS" size="1">
