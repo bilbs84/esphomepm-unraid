@@ -21,9 +21,9 @@ Icon="ups"
 		    <td></td>
 		    <td colspan='3' class='next'>
                 <i class='icon-ups'></i>
-                <div class='section'>_(Tasmota Power Monitor)_<br><span id='load'>_(Usage)_: <span class='tasmotapm-energy-power'>0</span> W</span><br><br></div>
+                <div class='section'>_(ESPHome Power Monitor)_<br><span id='load'>_(Usage)_: <span class='tasmotapm-energy-power'>0</span> W</span><br><br></div>
                 <i class='fa fa-fw chevron' id='tasmotapm_view' onclick='toggleChevron("tasmotapm_view",0)'></i>
-                <a href='/Settings/TasmotaPMSettings' title="_(Go to Tasmota Power Monitor settings)_"><i class='fa fa-fw fa-cog chevron'></i></a>
+                <a href='/Settings/ESPHomePMSettings' title="_(Go to ESPHome Power Monitor settings)_"><i class='fa fa-fw fa-cog chevron'></i></a>
             </td>
             <td></td>
 
@@ -89,7 +89,7 @@ Icon="ups"
 </table>
 <script>
 const tasmotapm_status = () => {
-    $.getJSON("/plugins/tasmotapm/status.php", (data) => {
+    $.getJSON("/plugins/esphomepm/status.php", (data) => {
         if (data) {
             $(".tasmotapm-energy-power").html(data.Power);
             $(".tasmotapm-energy-today").html(data.Today);
