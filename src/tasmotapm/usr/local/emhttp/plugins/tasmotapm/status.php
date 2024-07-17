@@ -24,13 +24,22 @@ $sensors = [
 $json = [];
 foreach ($sensors as $key => $endpoint) {
     $Url = "http://$esphome_device_ip$endpoint";
-    $datajson = file_get_contents($Url);
-    $data = json_decode($datajson, true);
+
+    // Set up the timeout options
+    $options = [
+        "http" => [
+            "timeout" => 5 // 5 seconds timeout
+        ]
+    ];
+    $context = stream_context_create($options);
     
-    if (isset($data['state'])) {
-        $json[$key] = $data['state'];
+    $datajson = @file_get_contents($Url, false, $context);
+    
+    if ($datajson === false) {
+        $json[$key] = "Error fetching data"; // Handle error
     } else {
-        $json[$key] = null; // Handle missing data
+        $data = json_decode($datajson, true);
+        $json[$key] = isset($data['state']) ? $data['state'] : null;
     }
 }
 
